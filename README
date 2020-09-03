@@ -1,8 +1,10 @@
 This project is my first attempt at a public bot, so report bugs to the github.
 
 Planned Updates:
- - tag command
  - ping command
  - kick command
  - shutdown command
  - eval command
+
+Finished Updates:
+ - Tag Command
