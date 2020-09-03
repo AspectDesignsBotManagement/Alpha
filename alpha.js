@@ -83,7 +83,7 @@ client.on('message', async message => {
             const tagName = splitArgs.shift();
             const tagDescription = splitArgs.join(' ');
 
-// equivalent to: UPDATE tags (descrption) values (?) WHERE name='?';
+            // equivalent to: UPDATE tags (descrption) values (?) WHERE name='?';
             const affectedRows = await Tags.update({ description: tagDescription }, { where: { name: tagName } });
             if (affectedRows > 0) {
                 return message.reply(`Tag ${tagName} was edited.`);
@@ -92,7 +92,7 @@ client.on('message', async message => {
         } else if (command === 'taginfo') {
             const tagName = commandArgs;
 
-// equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
+            // equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
             const tag = await Tags.findOne({ where: { name: tagName } });
             if (tag) {
                 return message.channel.send(`${tagName} was created by ${tag.username} at ${tag.createdAt} and has been used ${tag.usage_count} times.`);
@@ -104,7 +104,7 @@ client.on('message', async message => {
             return message.channel.send(`List of tags: ${tagString}`);
         } else if (command === 'removetag') {
             const tagName = commandArgs;
-// equivalent to: DELETE from tags WHERE name = ?;
+            // equivalent to: DELETE from tags WHERE name = ?;
             const rowCount = await Tags.destroy({ where: { name: tagName } });
             if (!rowCount) return message.reply('That tag did not exist.');
 
